@@ -1,26 +1,92 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes slide {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
   }
+  50% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+@utility container {
+    margin-inline: auto;
+    width: 90%;
+}
+
+.animate-slide {
+  animation: slide 2s ease-in-out infinite;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-cairo), sans-serif;
+  overflow-x: hidden;
 }
+body::selection {
+  @apply bg-amber-600 text-black
+}
+.HeroSection {
+  background-image: url(../imgg/master\ Vector\ ar.png);
+}
+.FootarDark{
+  background-image: linear-gradient(180deg, #191919 0%, rgba(25, 25, 25, 0.95) 100%), url(../imgg//Variant2.png);
+}
+.footer{
+  background-image: linear-gradient(180deg, #F7F7F7 0%, rgba(247, 247, 247, 0.945) 100%), url(../imgg//Variant2.png);
+}
+.HomePart2{
+  background-image: linear-gradient(to right, #fcf7f204 , #FCF7F2), url(../imgg/باترن.png);
+  background-size: cover;
+}
+.HomeProducts{
+  background: linear-gradient(180deg, #F2F2F2 0%, rgba(242, 242, 242, 0.959) 100%), url(../imgg/patern2.png);
+  background-size: cover;
+}
+.StorageforOtherspart1{
+  background: linear-gradient(to right, rgba(255, 102, 0, 0.842) 30%, rgb(255, 102, 0)50%), url(../imgg/patern2.png);
+  background-size: cover;
+}
+.HomeContactUs{
+  background:   linear-gradient(
+    to right,                 
+    rgba(255, 102, 0, 0.842) 20%,   
+    rgb(255, 102, 0) 50%,   
+    rgba(255, 102, 0, 0.747) 100%   
+  ), url(../imgg/patern2.png);
+  background-size: cover;
+  background-repeat: repeat;
+}
+.CardServis{
+  background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0)  0%,rgba(255, 255, 255, 0.336)  10%, rgb(255, 255, 255) 100%), url(../imgg/باترن.png);
+  background-size: 600px;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;     
+}
+
+@layer components {
+    .btn {
+        @apply  py-[8px] bg-white border-2 border-black text-black text-[16px] hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-colors duration-500 px-[32px] font-[500] rounded-[32px] cursor-pointer;
+    }
+
+    .form-control {
+        @apply p-[16px] rounded-[32px] ps-10  focus:border-orange-500 hover:border-orange-500 hover:cursor-pointer border-2 border-[#F2F2F2] focus:outline-none bg-white w-full placeholder:text-[16px];
+    }
+}
+
+
+

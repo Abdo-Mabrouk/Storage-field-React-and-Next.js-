@@ -1,14 +1,12 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar/Navbar";
+import Footar from "@/components/footar/Footar";
+import { Cairo } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const cairo = Cairo({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "500", "700"], // الأوزان اللي محتاجها
+  variable: "--font-cairo",      // هنعرفه كـ CSS variable
 });
 
 export const metadata = {
@@ -18,10 +16,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="ar" dir="rtl" className={cairo.variable}>
+      <body className="font-sans antialiased">
+        <Navbar />
         {children}
       </body>
     </html>
